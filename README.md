@@ -48,7 +48,7 @@ assert 'foo' not in type_names()
 
 ### Deploy/Undeploy Config ###
 
-Given a yaml config file `option_types/foo1.yaml`:
+Given a yaml config file [option_types/foo1.yaml](./option_types/foo1.yaml):
 
 ```yaml
 $optionType:
@@ -102,7 +102,7 @@ undeployed 1/1 file(s)
 This works by upserting or deleting nested entities in the expected order, and linking
 referential IDs to the parent object
 
-See `tests/data/catalog_items/item1.yaml` for larger example
+See [tests/data/catalog_items/item1.yaml](./tests/data/catalog_items/item1.yaml) for larger example
 
 ```console
 $ morpheus-data-api deploy tests/data/catalog_items/item1.yaml
@@ -162,7 +162,7 @@ optional arguments:
 ## MockMorpheusDataApi ##
 
 Bundled into the package is `mock.MockMorpheusDataApi()` which provides full persistent
-mocking of Morpheus API.  See `tests/test_morpheus_data_api.py` for examples how this is used.
+mocking of Morpheus API.  See [tests/test_morpheus_data_api.py](./tests/test_morpheus_data_api.py) for examples how this is used.
 
 ## License
 The license is Apache 2.0, see [LICENSE](./LICENSE) for the details.
