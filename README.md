@@ -3,6 +3,9 @@ Python client to Morpheus Data API
 
 https://apidocs.morpheusdata.com/
 
+![Tests](https://github.com/Accenture/morpheus-data-api/actions/workflows/tests.yml/badge.svg)
+![Codecov](https://codecov.io/gh/Accenture/morpheus-data-api/branch/master/graph/badge.svg)
+
 ## Usage ##
 
 ```python
@@ -117,20 +120,23 @@ deployed 1/1 file(s)
 
 ### Variables ###
 
-The following variables are supported within config file
+The following variables are supported within the config file
 
 | variable | description | example |
 | --- | --- | --- |
-| `$deleteIds` | delete additional entities during undeploy | `$deleteIds: [${id:optionTypes:foo}]` |
-| `$id` | lookup entity ID from ${id:path:name} expression | `id: ${id:optionTypes:foo}` |
-| `$json` | convert value to JSON | `$json: [1,2,3]` |
+| `$createPath` | nested below an $api object, override the path used to create entity | `$createPath: /api/library/instance-types/${id:instanceTypes:blueprint1.instanceType1}/layouts` |
 | `$dataset` | convert list of values to json optionType dataset | `$dataset: ['foo', 'bar']` |
 | `$datasetCsv` | convert contents of local csv file to json optionType dataset | `$datasetCsv: data.csv` |
-| `$fileContent` | read contents of local file | `$fileContent: foo.py` |
+| `$deleteIds` | delete additional entities during undeploy | `$deleteIds: [${id:optionTypes:foo}]` |
+| `$deletePath` | nested below an $api object, override the path used to delete entity | `$deletePath: /api/library/instance-types/${id:instanceTypes:blueprint1.instanceType1}/layouts` |
 | `$entity` | nested below an $api object, override entity name | `$entity: instanceTypeLayout` |
-| `$createPath` | nested below an $api object, override the path used to create entity | `$createPath: /api/library/instance-types/${id:instanceTypes:blueprint1.instanceType1}/layouts` |
-| `$updatePath` | nested below an $api object, override the path used to update entity | see above |
-| `$deletePath` | nested below an $api object, override the path used to delete entity | see above |
+| `$entityId` | nested below an $api object, override entity ID | `$entityId: key/128/foobar` |
+| `$fileContent` | read contents of local file | `$fileContent: foo.py` |
+| `$id` | lookup entity ID from ${id:path:name} expression | `id: ${id:optionTypes:foo}` |
+| `$json` | convert value to JSON | `$json: [1,2,3]` |
+| `$setName` | nested below an $api object, don't automatically set entity name if `false` | `$setName: false` |
+| `$updatePath` | nested below an $api object, override the path used to update entity | `$updatePath: /api/library/instance-types/${id:instanceTypes:blueprint1.instanceType1}/layouts` |
+| `$validate` | nested below an $api object, disable validation if `false` | `$validate: false` |
 
 ## Console Script ##
 
@@ -157,3 +163,6 @@ optional arguments:
 
 Bundled into the package is `mock.MockMorpheusDataApi()` which provides full persistent
 mocking of Morpheus API.  See `tests/test_morpheus_data_api.py` for examples how this is used.
+
+## License
+The license is Apache 2.0, see [LICENSE](./LICENSE) for the details.
