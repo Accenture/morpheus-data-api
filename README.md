@@ -53,8 +53,10 @@ Given a yaml config file [tests/data/option_types/foo1.yaml](./tests/data/option
 ```yaml
 $optionType:
   name: foo1
+  fieldName: foo1
   type: select
   description: foo1
+  fieldLabel: foo1
   optionList:
     id:
       $optionTypeList:
