@@ -3,8 +3,8 @@ Python client to Morpheus Data API
 
 https://apidocs.morpheusdata.com/
 
-![Tests](https://github.com/Accenture/morpheus-data-api/actions/workflows/tests.yml/badge.svg)
-![Codecov](https://codecov.io/gh/Accenture/morpheus-data-api/branch/master/graph/badge.svg)
+[![Tests](https://github.com/Accenture/morpheus-data-api/actions/workflows/tests.yml/badge.svg)](https://github.com/Accenture/morpheus-data-api/actions/workflows/tests.yml/)
+[![Codecov](https://codecov.io/gh/Accenture/morpheus-data-api/branch/master/graph/badge.svg)](https://codecov.io/gh/Accenture/morpheus-data-api/branch/master)
 
 ## Usage ##
 
