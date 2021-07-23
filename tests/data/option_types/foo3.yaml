@@ -1,0 +1,8 @@
+$optionTypes:
+  name: foo3
+  type: select
+  description: foo3
+  fieldLabel: foo3
+  fieldName: foo3
+  optionList:
+    id: ${id:/api/library/option-type-lists:foo2}

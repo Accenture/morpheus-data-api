@@ -1,0 +1,15 @@
+$/api/library/option-types:
+  name: foo2
+  type: select
+  description: foo2
+  fieldLabel: foo2
+  fieldName: foo2
+  optionList:
+    id:
+      $optionTypeList:
+        name: foo2
+        type: manual
+        initialDataset:
+          $dataset:
+            - bar2
+            - baz2

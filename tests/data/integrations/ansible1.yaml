@@ -1,0 +1,18 @@
+$integration:
+  config:
+    ansibleCommandBus: true
+    ansibleDefaultBranch: ansible-playbook
+    ansibleGalaxyEnabled: false
+    ansibleGroupVars: ''
+    ansibleHostVars: ansible
+    ansiblePlaybooks: ansible/playbooks
+    ansibleRoles: ansible/playbooks/roles
+    ansibleVerbose: true
+    defaultBranch: ansible-playbook
+  integrationType:
+    code: ansible
+  name: ansible1
+  password: foo.bar
+  type: ansible
+  url: https://github.com/foo/bar.git
+  username: foo.bar

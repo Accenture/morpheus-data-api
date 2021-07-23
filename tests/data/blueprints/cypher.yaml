@@ -1,0 +1,5 @@
+$/api/cypher:
+  $validate: false
+  $setName: false
+  $entity: cypher
+  $entityId: key/128/blueprint1_key

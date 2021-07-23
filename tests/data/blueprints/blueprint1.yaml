@@ -1,0 +1,38 @@
+$/api/cypher:
+  $validate: false
+  $setName: false
+  $entity: cypher
+  $entityId: key/128/blueprint1_key
+
+$instanceType:
+  name: blueprint1_instancetype1
+  category: test
+
+$layout:
+  $entity: instanceTypeLayout
+  $createPath: /api/library/instance-types/${id:instanceTypes:blueprint1_instancetype1}/layouts
+  name: blueprint1_layout1
+  instanceVersion: '1'
+  provisionTypeCode: Terraform
+  specTemplates:
+    - $specTemplate:
+        name: blueprint1_spec1
+        type:
+          code: terraform
+        file:
+          sourceType: local
+          content:
+            $fileContent: blueprint1_spec1.tf
+
+$blueprint:
+  name: blueprint1
+  type: morpheus
+  description: blueprint1
+  category: web, db, app
+  config:
+    tiers:
+      tier1:
+        tierIndex: 1
+        instances:
+          - instance:
+              name: blueprint1_instancetype1

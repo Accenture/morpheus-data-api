@@ -1,0 +1,13 @@
+[run]
+branch = True
+include =
+    morpheus_data_api/*
+
+[report]
+exclude_lines =
+    raise NotImplementedError.*
+omit =
+    tests/*
+
+[html]
+directory = coverage_html_report

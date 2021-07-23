@@ -1,0 +1,80 @@
+# 1) Use $deleteIds to delete resources during deploy/undeploy if needed
+# This is useful to remove entities that could be left orphened if deployed
+# as part of a nested entity and then subsequently omitted from file
+# Using wildcard (*) in op.* below will remove any option types
+# that start with 'op.'
+- $deleteIds:
+    - ${id:optionTypes:op.*}
+    - ${id:optionTypeLists:baz}
+
+# 2) deploy catalog item with task-set containing python task
+- $catalogItemType:
+    name: item1
+    description: item1
+    type: workflow
+    enabled: true
+    featured: false
+    context: appliance
+    workflow:
+      id:
+        $taskSet:
+          name: item1
+          type: operation
+          description: item1
+          tasks:
+            - taskId:
+                $task:
+                  name: task1
+                  taskType:
+                    code: jythonTask
+                    resultType: json
+                  executeTarget: local
+                  file:
+                    sourceType: local
+                    content:
+                      $fileContent: task1.py
+                  taskOptions:
+                    pythonBinary: /usr/bin/python3
+                    pythonArgs:
+                    pythonAdditionalPackages: boto3
+          optionTypes:
+            - $optionType:
+                name: item1
+                type: text
+                fieldName: item1
+                fieldLabel: item1
+                description: |-
+                  some description
+            - $optionType:
+                name: item2
+                type: select
+                fieldName: item2
+                fieldLabel: item2
+                description: item2
+                optionList:
+                  id:
+                    $optionTypeList:
+                      name: item2
+                      type: manual
+                      initialDataset:
+                        $dataset:
+                          - foo
+                          - bar
+
+# 3) deploy execute schedule then job for workflow deployed in #1 above
+- $job:
+    name: job1
+    workflow:
+      id: ${id:task-sets:item1}
+    targetType: appliance
+    scheduleMode:
+      $executeSchedule:
+        name: schedule1
+        scheduleTimezone: UTC
+        cron: '1 * * * *'
+        description: invoke job hourly
+    customOptions:
+      foo: bar
+      run: True
+
+

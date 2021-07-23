@@ -1,0 +1,13 @@
+$optionType:
+  name: foo1
+  fieldName: foo1
+  type: select
+  description: foo1
+  fieldLabel: foo1
+  optionList:
+    id:
+      $optionTypeList:
+        name: foo1
+        type: manual
+        initialDataset:
+          $datasetCsv: dataset.csv
