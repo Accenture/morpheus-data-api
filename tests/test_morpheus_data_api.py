@@ -38,7 +38,9 @@ TYPE_DATA = {
     'optionType': {
         'name': 'foo',
         'type': 'text',
-        'description': 'foo'
+        'description': 'foo',
+        'fieldName': 'foo',
+        'fieldLabel': 'foo'
     }
 }
 DATA_FILE = os.path.join(gettempdir(), 'morpheus-data-api-test-mock.json')

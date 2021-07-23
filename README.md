@@ -20,7 +20,9 @@ type_data = {
     'optionType': {
         'name': 'foo',
         'type': 'text',
-        'description': 'foo'
+        'description': 'foo',
+        'fieldLabel': 'foo',
+        'fieldName': 'foo'
     }
 }
 
