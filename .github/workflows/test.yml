@@ -30,3 +30,7 @@ jobs:
       - name: Test with pytest
         run: |
           pytest --cov=morpheus_data_api --cov-fail-under 90 --cov-report=xml --cov-report=html --cov-config=.github/workflows/coveragerc
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
