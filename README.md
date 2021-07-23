@@ -48,7 +48,7 @@ assert 'foo' not in type_names()
 
 ### Deploy/Undeploy Config ###
 
-Given a yaml config file [option_types/foo1.yaml](./option_types/foo1.yaml):
+Given a yaml config file [tests/data/option_types/foo1.yaml](./tests/data/option_types/foo1.yaml):
 
 ```yaml
 $optionType:
