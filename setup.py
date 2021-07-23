@@ -48,7 +48,7 @@ setup(
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     author='Roger Foskett',
-    author_email='roger.foskett@accenture.com',
+    author_email='r_foskett@hotmail.com',
     license='Apache License 2.0',
     packages=find_packages(),
     classifiers=[
@@ -61,5 +61,6 @@ setup(
         'console_scripts': [
             'morpheus-data-api = morpheus_data_api:console_main',
         ]
-    }
+    },
+    url='https://github.com/Accenture/morpheus-data-api/'
 )
