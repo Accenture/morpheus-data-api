@@ -25,6 +25,7 @@ import re
 import requests
 import sys
 from urllib import parse as urlparse
+from urllib3.exceptions import InsecureRequestWarning
 import yaml
 
 
@@ -142,7 +143,7 @@ def prompt(val):
         prompt_val = input(COLOR.bold(prompt_txt + ': '))
         if pattern is not None:
             if re.match('^' + pattern + '$', prompt_val):
-                print('match %s %s' % (pattern, prompt_val))
+                # print('match %s %s' % (pattern, prompt_val))
                 break
             else:
                 print('value must match pattern %s' % pattern)
@@ -214,6 +215,7 @@ class MorpheusDataApi:
         defaults = {
             'host': os.environ.get('MORPHEUS_HOST'),
             'token': os.environ.get('MORPHEUS_TOKEN'),
+            'ssl_verify': True,
             'print_msg': True,
             'print_handler': print_handler,
             'fatal_handler': None,
@@ -232,6 +234,13 @@ class MorpheusDataApi:
         self.fatal_handler = kwargs.get('fatal_handler')
         self.debug_handler = kwargs.get('debug_handler')
         self.colorize = kwargs['colorize']
+        if os.environ.get('MORPHEUS_SSL_VERIFY') == 'FALSE':
+            kwargs['ssl_verify'] = False
+        self.ssl_verify = kwargs['ssl_verify']
+        if self.ssl_verify is False:
+            requests.packages.urllib3.disable_warnings(
+                category=InsecureRequestWarning
+            )
 
     def print_msg(self, msg):
         """Default print handler used on create/update/delete
@@ -275,6 +284,7 @@ class MorpheusDataApi:
         }
 
         s = requests.Session()
+        s.verify = self.ssl_verify
 
         if isinstance(data, dict) or isinstance(data, list):
             headers['Content-Type'] = 'application/json'

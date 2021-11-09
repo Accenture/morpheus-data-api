@@ -80,7 +80,15 @@ def test_constructor_exceptions():
         MorpheusDataApi()
     assert e.type == ConstructorException
     assert str(e.value) == 'token required'
-    unset_env_vars
+    unset_env_vars()
+
+
+def test_ssl_verify():
+    set_env_vars()
+    assert MorpheusDataApi().ssl_verify is True
+    assert MorpheusDataApi(ssl_verify=False).ssl_verify is False
+    os.environ['MORPHEUS_SSL_VERIFY'] = 'FALSE'
+    assert MorpheusDataApi().ssl_verify is False
 
 
 @responses.activate
